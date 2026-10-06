@@ -1,0 +1,19 @@
+# Python environment and caches
+.venv/
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Local secrets
+.env
+.env.*
+
+# Datasets and generated features
+data/
+features/
+
+# Model files — add separately after checking sizes
+models/
+trained_model/
+trained_model_v2/
