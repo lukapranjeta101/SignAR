@@ -2,19 +2,21 @@ import csv
 import numpy as np
 import torch
 
-from train_model import ROOT, SignModel, prepare_video
+from train_model import ROOT
+from train_model_v2 import prepare_v2
+from train_transformer import TransformerModel
 
 
 def main():
     checkpoint = torch.load(
-        ROOT / "trained_model/sign_model.pt",
+        ROOT / "trained_models/trained_model_transformer/sign_model.pt",
         map_location="cpu",
         weights_only=True
     )
 
     labels = checkpoint["labels"]
 
-    model = SignModel(checkpoint["input_size"], len(labels))
+    model = TransformerModel(checkpoint["input_size"], len(labels))
     model.load_state_dict(checkpoint["state_dict"])
     model.eval()
 
@@ -27,7 +29,7 @@ def main():
 
     with torch.no_grad():
         for path in paths:
-            features, actual = prepare_video(path)
+            features, actual = prepare_v2(path)
             inputs = torch.from_numpy(features).unsqueeze(0)
             logits = model(inputs)
 
@@ -47,29 +49,17 @@ def main():
     correct = int(np.trace(confusion))
     total = len(results)
 
-    print("\nTEST RESULTS")
+    print("\nTEST RESULTS (Transformer)")
     print(f"Correct: {correct}/{total}")
     print(f"Test accuracy: {correct / total:.1%}")
 
     print("\nPER-SIGN RECALL")
-    print("For each actual sign, how many were recognized correctly?")
     for index, label in enumerate(labels):
         count = int(confusion[index].sum())
         hits = int(confusion[index, index])
         print(f"{label:12} {hits:2}/{count:2} = {hits / count:.1%}")
 
-    print("\nMOST COMMON CONFUSIONS")
-    mistakes = [
-        (int(confusion[i, j]), labels[i], labels[j])
-        for i in range(len(labels))
-        for j in range(len(labels))
-        if i != j and confusion[i, j] > 0
-    ]
-
-    for count, actual, predicted in sorted(mistakes, reverse=True)[:10]:
-        print(f"{actual} mistaken for {predicted}: {count}")
-
-    output = ROOT / "trained_model"
+    output = ROOT / "trained_models/trained_model_transformer"
 
     with (output / "test_predictions.csv").open("w", newline="") as file:
         writer = csv.DictWriter(file, fieldnames=results[0].keys())

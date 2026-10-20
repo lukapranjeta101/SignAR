@@ -1,0 +1,11 @@
+model,technique,lecture,test_accuracy,correct,total
+trained_model_v2 (seed_7),Deep sequence net (wrist/shape/motion v2 features),-,0.858,163,190
+trained_model_v2 (seed_123),Deep sequence net (wrist/shape/motion v2 features),-,0.847,161,190
+trained_model_v2 (seed_42),Deep sequence net (wrist/shape/motion v2 features),-,0.826,157,190
+trained_model_v2 (mean),Deep sequence net (wrist/shape/motion v2 features),-,0.844,,
+trained_model_linear_regression,Linear Regression (least squares, one-vs-rest indicators),Lecture 5,0.742,141,190
+trained_model_logistic_regression,Logistic Regression (softmax over linear score),Lecture 6,0.716,136,190
+trained_model_svm,SVM (best kernel: linear; also tried poly/rbf/sigmoid),Lecture 4,0.711,135,190
+trained_model_perceptron,Perceptron (single-layer linear boundary),Lecture 3,0.700,133,190
+trained_model (baseline),Original single-run LSTM-style net,-,0.684,130,190
+trained_model_mlp,Multilayer Perceptron (2 hidden layers: 64-32),Lecture 3,0.553,105,190

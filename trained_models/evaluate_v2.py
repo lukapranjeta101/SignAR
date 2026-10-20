@@ -21,7 +21,7 @@ def main():
 
     for seed in [42, 7, 123]:
         checkpoint = torch.load(
-            ROOT / f"trained_model_v2/seed_{seed}/sign_model.pt",
+            ROOT / f"trained_models/trained_model_v2/seed_{seed}/sign_model.pt",
             map_location="cpu",
             weights_only=True
         )

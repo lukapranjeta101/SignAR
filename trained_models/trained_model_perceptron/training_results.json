@@ -1,0 +1,5 @@
+{
+  "technique": "perceptron",
+  "train_accuracy": 0.981651376146789,
+  "validation_accuracy": 0.8596491228070176
+}

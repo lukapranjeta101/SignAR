@@ -1,0 +1,5 @@
+{
+  "technique": "linear_regression",
+  "train_accuracy": 1.0,
+  "validation_accuracy": 0.8070175438596491
+}

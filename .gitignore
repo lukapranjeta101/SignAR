@@ -9,11 +9,10 @@ __pycache__/
 .env
 .env.*
 
-# Datasets and generated features
+# ASL Citizen dataset is under a Microsoft Research license that prohibits
+# redistribution — do not push this or any derived features.
 data/
 features/
 
-# Model files — add separately after checking sizes
+# MediaPipe task files — auto-downloaded by hand_tracker.py if missing
 models/
-trained_model/
-trained_model_v2/

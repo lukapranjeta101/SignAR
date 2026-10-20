@@ -11,7 +11,7 @@ from torch.utils.data import DataLoader, TensorDataset
 from train_model import SignModel, prepare_video
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 STEPS = 48
 
 
@@ -122,7 +122,7 @@ def main(seed):
 
     # Read labels from the existing model without modifying it.
     checkpoint = torch.load(
-        ROOT / "trained_model/sign_model.pt",
+        ROOT / "trained_models/trained_model/sign_model.pt",
         map_location="cpu",
         weights_only=True
     )
@@ -165,7 +165,7 @@ def main(seed):
     val_x = val_x.to(device)
     val_y = val_y.to(device)
 
-    output = ROOT / "trained_model_v2" / f"seed_{seed}"
+    output = ROOT / "trained_models/trained_model_v2" / f"seed_{seed}"
     output.mkdir(parents=True, exist_ok=True)
 
     best_loss = float("inf")

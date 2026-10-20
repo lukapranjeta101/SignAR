@@ -9,7 +9,7 @@ from torch import nn
 from torch.utils.data import DataLoader, TensorDataset
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 STEPS = 48
 SEED = 42
 
@@ -228,7 +228,7 @@ def main():
             print("Stopping: validation loss has not improved for 20 epochs.")
             break
 
-    destination = ROOT / "trained_model"
+    destination = ROOT / "trained_models/trained_model"
     destination.mkdir(exist_ok=True)
 
     torch.save(

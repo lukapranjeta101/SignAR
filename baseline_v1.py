@@ -228,7 +228,7 @@ def main():
             print("Stopping: validation loss has not improved for 20 epochs.")
             break
 
-    destination = ROOT / "trained_model"
+    destination = ROOT / "trained_models/trained_model"
     destination.mkdir(exist_ok=True)
 
     torch.save(

@@ -1,14 +1,18 @@
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
+import sys
 
 import numpy as np
 import torch
+
+sys.path.insert(0, str(Path(__file__).resolve().parent / "trained_models"))
 
 from train_model import ROOT, SignModel, prepare_video
 
 
 def main():
     checkpoint = torch.load(
-        ROOT / "trained_model/sign_model.pt",
+        ROOT / "trained_models/trained_model/sign_model.pt",
         map_location="cpu",
         weights_only=True
     )

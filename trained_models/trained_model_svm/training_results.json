@@ -1,0 +1,7 @@
+{
+  "technique": "svm",
+  "kernel": "linear",
+  "C": 10.0,
+  "train_accuracy": 1.0,
+  "validation_accuracy": 0.8421052631578947
+}

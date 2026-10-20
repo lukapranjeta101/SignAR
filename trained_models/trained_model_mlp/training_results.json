@@ -1,0 +1,10 @@
+{
+  "technique": "mlp",
+  "hidden_layer_sizes": [
+    64,
+    32
+  ],
+  "train_accuracy": 0.9403669724770642,
+  "validation_accuracy": 0.7017543859649122,
+  "iterations": 39
+}
